@@ -32,18 +32,6 @@
       "languageVersion": "2.0"
     },
     {
-      "name": "auto_route",
-      "rootUri": "file:///opt/flutter/.pub-cache/hosted/pub.dartlang.org/auto_route-0.2.2",
-      "packageUri": "lib/",
-      "languageVersion": "2.5"
-    },
-    {
-      "name": "auto_route_generator",
-      "rootUri": "file:///opt/flutter/.pub-cache/hosted/pub.dartlang.org/auto_route_generator-0.2.2",
-      "packageUri": "lib/",
-      "languageVersion": "2.5"
-    },
-    {
       "name": "boolean_selector",
       "rootUri": "file:///opt/flutter/.pub-cache/hosted/pub.dartlang.org/boolean_selector-1.0.5",
       "packageUri": "lib/",
@@ -96,6 +84,12 @@
       "rootUri": "file:///opt/flutter/.pub-cache/hosted/pub.dartlang.org/built_value-7.0.9",
       "packageUri": "lib/",
       "languageVersion": "2.3"
+    },
+    {
+      "name": "carousel_slider",
+      "rootUri": "file:///opt/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_slider-1.4.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
     },
     {
       "name": "charcode",
@@ -168,6 +162,12 @@
       "rootUri": "file:///opt/flutter/packages/flutter_test",
       "packageUri": "lib/",
       "languageVersion": "2.2"
+    },
+    {
+      "name": "get_it",
+      "rootUri": "file:///opt/flutter/.pub-cache/hosted/pub.dartlang.org/get_it-4.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
     },
     {
       "name": "glob",
@@ -344,12 +344,6 @@
       "languageVersion": "1.11"
     },
     {
-      "name": "source_gen",
-      "rootUri": "file:///opt/flutter/.pub-cache/hosted/pub.dartlang.org/source_gen-0.9.5",
-      "packageUri": "lib/",
-      "languageVersion": "2.5"
-    },
-    {
       "name": "source_span",
       "rootUri": "file:///opt/flutter/.pub-cache/hosted/pub.dartlang.org/source_span-1.5.5",
       "packageUri": "lib/",
@@ -440,7 +434,7 @@
       "languageVersion": "2.6"
     }
   ],
-  "generated": "2020-03-24T15:20:51.109249Z",
+  "generated": "2020-03-27T15:29:13.589228Z",
   "generator": "pub",
   "generatorVersion": "2.8.0-dev.12.0.flutter-9983424a3c"
 }

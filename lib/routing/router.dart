@@ -1,14 +1,47 @@
-import 'package:auto_route/auto_route_annotations.dart';
+import 'package:flutter/material.dart';
+import 'package:website/routing/route_names.dart';
 import 'package:website/screens/Apps_View/apps_view.dart';
 import 'package:website/screens/Home_View/home_view.dart';
-import 'package:website/screens/Layout_Template/layout_template.dart';
 import 'package:website/screens/Movies_View/movies_view.dart';
 
-@autoRouter
-class $Router {
-  @initial
-  LayoutTemplate layoutTemplate;
-  HomeView homeView;
-  MoviesView moviesView;
-  AppsView appsView;
+Route<dynamic> generateRoute(RouteSettings settings) {
+  switch (settings.name) {
+    case HomeRoute:
+      return _getPageRoute(HomeView());
+    case AppsRoute:
+      return _getPageRoute(AppsView());
+    case MoviesRoute:
+      return _getPageRoute(MoviesView());
+    // case SourceCodeRoute:
+    //   return _getPageRoute(SourceCodeView());
+    default:
+      return null;
+  }
+}
+
+PageRoute _getPageRoute(Widget child) {
+  return _FadeRoute(child: child);
+}
+
+class _FadeRoute extends PageRouteBuilder {
+  final Widget child;
+  _FadeRoute({this.child})
+      : super(
+          pageBuilder: (
+            BuildContext context,
+            Animation<double> animation,
+            Animation<double> secondaryAnimation,
+          ) =>
+              child,
+          transitionsBuilder: (
+            BuildContext context,
+            Animation<double> animation,
+            Animation<double> secondaryAnimation,
+            Widget child,
+          ) =>
+              FadeTransition(
+            opacity: animation,
+            child: child,
+          ),
+        );
 }

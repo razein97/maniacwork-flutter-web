@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:website/helpers/sizes_helpers.dart';
-import 'package:website/routing/router.gr.dart';
-import 'package:website/widgets/navigation_drawer/drawer_item.dart';
+import 'package:website/routing/route_names.dart';
+import 'package:website/widgets/navigation_bar_item/navigation_bar_item.dart';
 import 'package:website/widgets/navigation_drawer/navigation_drawer_header.dart';
 
 class NavigationDrawer extends StatelessWidget {
@@ -20,14 +20,16 @@ class NavigationDrawer extends StatelessWidget {
       child: Column(
         children: <Widget>[
           NavigationDrawerHeader(),
-          DrawerItem(
-              drawerTitle: 'Apps',
-              icon: Icons.apps,
-              routePath: Router.appsView),
-          DrawerItem(
-              drawerTitle: 'Movies',
-              icon: Icons.ondemand_video,
-              routePath: Router.moviesView),
+          NavigationBarItem(
+            'Apps',
+            AppsRoute,
+            icon: Icons.apps,
+          ),
+          NavigationBarItem(
+            'Movies',
+            MoviesRoute,
+            icon: Icons.ondemand_video,
+          ),
         ],
       ),
     );

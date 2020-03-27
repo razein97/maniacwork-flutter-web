@@ -1,1 +1,0 @@
-{"isEntrypoint":true,"deps":["flutter|lib/material.dart","responsive_builder|lib/responsive_builder.dart","website|lib/style.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":[],"hasMain":false}

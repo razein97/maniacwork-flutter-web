@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:website/widgets/navigation_bar/navigation_bar_logo.dart';
+import 'package:website/extensions/hover_extensions.dart';
 
 class NavigationBarMobile extends StatelessWidget {
   const NavigationBarMobile({Key key}) : super(key: key);
@@ -21,7 +22,7 @@ class NavigationBarMobile extends StatelessWidget {
               Icons.menu,
               color: Colors.white,
             ),
-          ),
+          ).showCursorOnHover,
           NavigationBarLogo(),
         ],
       ),

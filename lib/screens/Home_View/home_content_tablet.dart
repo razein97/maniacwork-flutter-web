@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:website/helpers/sizes_helpers.dart';
+import 'package:website/widgets/carousel/carousel.dart';
 
 class HomeContentTablet extends StatelessWidget {
   const HomeContentTablet({Key key}) : super(key: key);
@@ -6,13 +8,17 @@ class HomeContentTablet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Container(
-        color: Colors.green,
-        child: Text(
-          "HOME CONTENT TABLET",
-          style: TextStyle(fontSize: 20.0),
-        ),
-      ),
-    );
+        width: displayWidth(context),
+        color: Colors.red,
+        child: Column(
+          children: <Widget>[
+            Carousel(
+              centerPageEnlarge: true,
+              viewportFraction: 0.9,
+              aspectRatio: 16 / 10,
+              height: displayHeight(context) * 0.6,
+            ),
+          ],
+        ));
   }
 }

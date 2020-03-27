@@ -9,10 +9,10 @@ class AppsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenTypeLayout(
-      mobile: AppsContentMobile(),
-      tablet: AppsContentTablet(),
-      desktop: AppsContentDesktop(),
+    return ScreenTypeLayout.builder(
+      mobile: (BuildContext context) => AppsContentMobile(),
+      tablet: (BuildContext context) => AppsContentTablet(),
+      desktop: (BuildContext context) => AppsContentDesktop(),
     );
   }
 }

@@ -9,10 +9,10 @@ class MoviesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenTypeLayout(
-      mobile: MoviesContentMobile(),
-      tablet: MoviesContentTablet(),
-      desktop: MoviesContentDesktop(),
+    return ScreenTypeLayout.builder(
+      mobile: (BuildContext context) => MoviesContentMobile(),
+      tablet: (BuildContext context) => MoviesContentTablet(),
+      desktop: (BuildContext context) => MoviesContentDesktop(),
     );
   }
 }

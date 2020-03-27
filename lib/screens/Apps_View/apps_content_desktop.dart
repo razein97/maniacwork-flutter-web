@@ -6,6 +6,7 @@ class AppsContentDesktop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.teal,
       child: Text(
         "APPs CONTENT DESKTOP",
         style: TextStyle(fontSize: 100.0),
