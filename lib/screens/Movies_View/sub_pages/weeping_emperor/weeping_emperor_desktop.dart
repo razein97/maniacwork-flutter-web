@@ -17,8 +17,7 @@ class WeepingEmperorDesktop extends StatelessWidget {
             child: Container(
               width: displayWidth(context),
               height: displayHeight(context) * 0.5,
-              child: VideoPlayerWeb(
-                  'http://mirrors.standaloneinstaller.com/video-sample/P6090053.mp4'),
+              child: VideoPlayerWeb(),
               color: Colors.black,
             ),
           ),

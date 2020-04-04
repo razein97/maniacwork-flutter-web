@@ -2,18 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:website/constants/constants.dart';
 
 class MyPopUpMenu extends StatefulWidget {
+  final Function changeStream;
+  final AssetImage iconAssetImage;
+
+  MyPopUpMenu({@required this.changeStream, @required this.iconAssetImage});
+
   @override
   _MyPopUpMenuState createState() => _MyPopUpMenuState();
 }
 
 class _MyPopUpMenuState extends State<MyPopUpMenu> {
-  AssetImage iconAssetImage = AssetImage('assets/icons/480p_24px.png');
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton(
       padding: EdgeInsets.zero,
-      icon: ImageIcon(iconAssetImage, color: Colors.black, size: 24),
-      tooltip: 'Settings',
+      icon: ImageIcon(widget.iconAssetImage, color: Colors.black, size: 24),
+      tooltip: 'Resolution',
       // offset: Offset(10.0, -500),
       onSelected: choiceAction,
 
@@ -29,10 +33,17 @@ class _MyPopUpMenuState extends State<MyPopUpMenu> {
   }
 
   void choiceAction(String choice) {
-    if (choice == Constants.R1080p) {
-      iconAssetImage = AssetImage('assets/icons/1080p_24px.png');
-    } else if (choice == Constants.R720p) {
-      iconAssetImage = AssetImage('assets/icons/720p_24px.png');
-    }
+    setState(() {
+      if (choice == Constants.r1080p) {
+        //iconAssetImage = AssetImage('assets/icons/1080p_24px.png');
+        widget.changeStream(Constants.path1080);
+      } else if (choice == Constants.r720p) {
+        //iconAssetImage = AssetImage('assets/icons/720p_24px.png');
+        widget.changeStream(Constants.path720);
+      } else if (choice == Constants.r480p) {
+        //iconAssetImage = AssetImage('assets/icons/480p_24px.png');
+        widget.changeStream(Constants.path480);
+      }
+    });
   }
 }
