@@ -199,7 +199,9 @@ class _VideoPlayerWebState extends State<VideoPlayerWeb> {
                         Container(
                           width: centeredViewWidth * 0.03,
                           child: GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              showPopup(context);
+                            },
                             child: Icon(Icons.fullscreen),
                           ),
                         )
@@ -216,6 +218,36 @@ class _VideoPlayerWebState extends State<VideoPlayerWeb> {
               ),
             );
           }
+        });
+  }
+
+  Future<bool> showPopup(context) {
+    return showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return Dialog(
+              insetPadding: EdgeInsets.all(0),
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
+                color: Colors.black,
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      // width: 100,
+                      // height: 100,
+                      child: FlatButton(
+                        color: Colors.white,
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: Icon(Icons.clear),
+                      ),
+                    ),
+                  ],
+                ),
+              ));
         });
   }
 

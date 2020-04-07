@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:website/helpers/sizes_helpers.dart';
-import 'package:website/routing/route_names.dart';
+import 'package:website/routing/router.gr.dart';
 import 'package:website/widgets/centered_view/centered_view.dart';
 import 'package:website/widgets/navigation_bar/navigation_bar_logo.dart';
 import 'package:website/widgets/navigation_bar_item/navigation_bar_item.dart';
@@ -26,14 +26,14 @@ class NavigationBarTablet extends StatelessWidget {
               children: <Widget>[
                 NavigationBarItem(
                   'Apps',
-                  AppsRoute,
+                  Routes.apps,
                 ),
                 SizedBox(
                   width: dSizedBox,
                 ),
                 NavigationBarItem(
                   'Movies',
-                  MoviesRoute,
+                  Routes.movies,
                 ),
                 SizedBox(
                   width: dSizedBox,

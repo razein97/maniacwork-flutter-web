@@ -1,9 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:website/extras/locator.dart';
 import 'package:website/helpers/sizes_helpers.dart';
 import 'package:website/extensions/hover_extensions.dart';
-import 'package:website/routing/route_names.dart';
-import 'package:website/services/navigation_service.dart';
+import 'package:website/routing/router.gr.dart';
 
 class NavigationBarLogo extends StatelessWidget {
   const NavigationBarLogo({Key key}) : super(key: key);
@@ -12,7 +11,9 @@ class NavigationBarLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        locator<NavigationService>().navigateTo(HomeRoute);
+        if (ModalRoute.of(context)?.settings?.name != Routes.home) {
+          ExtendedNavigator.of(context).pushNamed(Routes.home);
+        }
       },
       child: SizedBox(
         height: displayWidth(context) * 0.1,

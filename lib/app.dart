@@ -1,9 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:website/extras/locator.dart';
-import 'package:website/routing/route_names.dart';
-import 'package:website/routing/router.dart';
-import 'package:website/screens/Layout_Template/layout_template.dart';
-import 'package:website/services/navigation_service.dart';
+import 'package:website/routing/router.gr.dart';
 
 class App extends StatelessWidget {
   const App({Key key}) : super(key: key);
@@ -12,12 +9,10 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Maniacwork',
-      builder: (context, child) => LayoutTemplate(
-        child: child,
+      builder: ExtendedNavigator<Router>(
+        initialRoute: Routes.home,
+        router: Router(),
       ),
-      navigatorKey: locator<NavigationService>().navigatorKey,
-      onGenerateRoute: generateRoute,
-      initialRoute: HomeRoute,
     );
   }
 }
