@@ -10,7 +10,10 @@ class WeepingEmperorMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenTypeLayout.builder(
-      mobile: (BuildContext context) => WeepingEmperorMobile(),
+      mobile: (BuildContext context) => PreferredSize(
+        preferredSize: Size(double.infinity, 100),
+        child: WeepingEmperorMobile(),
+      ),
       tablet: (BuildContext context) => WeepingEmperorTablet(),
       desktop: (BuildContext context) => WeepingEmperorDesktop(),
     );

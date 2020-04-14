@@ -11,12 +11,15 @@ class HomeContentMobile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: NavigationDrawer(),
+      appBar: PreferredSize(
+        preferredSize: Size(double.infinity, 100),
+        child: NavigationBar(),
+      ),
       body: Container(
           width: displayWidth(context),
           color: Colors.red,
           child: Column(
             children: <Widget>[
-              NavigationBar(),
               Carousel(
                 centerPageEnlarge: false,
                 viewportFraction: 0.95,

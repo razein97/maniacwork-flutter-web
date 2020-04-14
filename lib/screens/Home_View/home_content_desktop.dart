@@ -8,27 +8,25 @@ class HomeContentDesktop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: <Widget>[
-        NavigationBar(),
-        Expanded(
-          child: Container(
-            width: displayWidth(context),
-            color: Colors.red,
-            child: ListView(
-              children: <Widget>[
-                Carousel(
-                  centerPageEnlarge: true,
-                  viewportFraction: 0.9,
-                  aspectRatio: 16 / 10,
-                  height: displayHeight(context) * 0.8,
-                ),
-              ],
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size(double.infinity, 100),
+        child: NavigationBar(),
+      ),
+      body: Container(
+        width: displayWidth(context),
+        color: Colors.red,
+        child: ListView(
+          children: <Widget>[
+            Carousel(
+              centerPageEnlarge: true,
+              viewportFraction: 0.9,
+              aspectRatio: 16 / 10,
+              height: displayHeight(context) * 0.8,
             ),
-          ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

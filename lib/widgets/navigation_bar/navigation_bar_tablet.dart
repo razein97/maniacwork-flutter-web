@@ -17,6 +17,8 @@ class NavigationBarTablet extends StatelessWidget {
       height: dNavigationBarHeight,
       child: CenteredView(
         hPadding: 20.0,
+        maxWidth: 1500,
+        maxHeight: 2000,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[

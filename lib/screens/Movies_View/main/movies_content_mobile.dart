@@ -11,53 +11,49 @@ class MoviesContentMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size(double.infinity, 100),
+        child: NavigationBar(),
+      ),
       drawer: NavigationDrawer(),
-      body: Column(
+      body: Stack(
         children: <Widget>[
-          NavigationBar(),
-          Expanded(
-            child: Stack(
-              children: <Widget>[
-                Center(
-                  child: Image.asset(
-                    'assets/images/movies/bg.jpg',
-                    fit: BoxFit.fill,
-                    width: displayWidth(context),
-                    height: displayHeight(context),
-                  ),
-                ),
-                Center(
-                  child: Image.asset(
-                    'assets/images/movies/bg.gif',
-                    fit: BoxFit.fill,
-                    width: displayWidth(context),
-                    height: displayHeight(context),
-                  ),
-                ),
-                Center(
-                  child: FlatButton(
-                    padding: EdgeInsets.all(8.0),
-                    hoverColor: Colors.white,
-                    onPressed: () {
-                      ExtendedNavigator.of(context)
-                          .pushNamed(Routes.weepingEmperor);
-                    },
-                    child: Container(
-                      width: displayWidth(context) * 0.5,
-                      height: displayHeight(context) * 0.5,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(
-                              'assets/images/movies/weeping_emperor/poster_hd.png'),
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                    ),
-                  ),
-                )
-              ],
+          Center(
+            child: Image.asset(
+              'assets/images/movies/bg.jpg',
+              fit: BoxFit.fill,
+              width: displayWidth(context),
+              height: displayHeight(context),
             ),
           ),
+          Center(
+            child: Image.asset(
+              'assets/images/movies/bg.gif',
+              fit: BoxFit.fill,
+              width: displayWidth(context),
+              height: displayHeight(context),
+            ),
+          ),
+          Center(
+            child: FlatButton(
+              padding: EdgeInsets.all(8.0),
+              hoverColor: Colors.white,
+              onPressed: () {
+                ExtendedNavigator.of(context).pushNamed(Routes.weepingEmperor);
+              },
+              child: Container(
+                width: displayWidth(context) * 0.5,
+                height: displayHeight(context) * 0.5,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(
+                        'assets/images/movies/weeping_emperor/poster_hd.png'),
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );

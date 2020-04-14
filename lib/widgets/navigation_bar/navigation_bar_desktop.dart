@@ -5,8 +5,10 @@ import 'package:website/widgets/centered_view/centered_view.dart';
 import 'package:website/widgets/navigation_bar/navigation_bar_logo.dart';
 import 'package:website/widgets/navigation_bar_item/navigation_bar_item.dart';
 
-class NavigationBarDesktop extends StatelessWidget {
-  const NavigationBarDesktop({Key key}) : super(key: key);
+class NavigationBarDesktop extends StatelessWidget
+    implements PreferredSizeWidget {
+  final Size preferredSize;
+  NavigationBarDesktop() : preferredSize = Size.fromHeight(60.0);
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +19,8 @@ class NavigationBarDesktop extends StatelessWidget {
       height: dNavigationBarHeight,
       child: CenteredView(
         hPadding: 50.0,
+        maxWidth: 1500,
+        maxHeight: 2000,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[

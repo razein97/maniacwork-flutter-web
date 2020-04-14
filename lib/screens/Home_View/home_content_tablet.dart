@@ -9,12 +9,15 @@ class HomeContentTablet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size(double.infinity, 100),
+        child: NavigationBar(),
+      ),
       body: Container(
           width: displayWidth(context),
           color: Colors.red,
           child: Column(
             children: <Widget>[
-              NavigationBar(),
               Carousel(
                 centerPageEnlarge: true,
                 viewportFraction: 0.9,
