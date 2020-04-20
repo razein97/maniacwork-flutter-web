@@ -10,12 +10,14 @@ import 'package:auto_route/auto_route.dart';
 import 'package:website/screens/Home_View/home_view.dart';
 import 'package:website/screens/Movies_View/movies_view.dart';
 import 'package:website/screens/Apps_View/apps_view.dart';
+import 'package:website/screens/VideoPlayer_view/videoplayer_main.dart';
 import 'package:website/screens/Movies_View/sub_pages/weeping_emperor/weeping_emperor.dart';
 
 abstract class Routes {
   static const home = '/';
   static const movies = '/movies';
   static const apps = '/apps';
+  static const videoPlayerMain = '/video-player-main';
   static const weepingEmperor = '/weeping-emperor';
 }
 
@@ -56,6 +58,15 @@ class Router extends RouterBase {
           builder: (_) => AppsView(key: typedArgs.key),
           settings: settings,
         );
+      case Routes.videoPlayerMain:
+        if (hasInvalidArgs<VideoPlayerMainArguments>(args, isRequired: true)) {
+          return misTypedArgsRoute<VideoPlayerMainArguments>(args);
+        }
+        final typedArgs = args as VideoPlayerMainArguments;
+        return MaterialPageRoute<dynamic>(
+          builder: (_) => VideoPlayerMain(videoSources: typedArgs.videoSources),
+          settings: settings,
+        );
       case Routes.weepingEmperor:
         if (hasInvalidArgs<WeepingEmperorMainArguments>(args)) {
           return misTypedArgsRoute<WeepingEmperorMainArguments>(args);
@@ -92,6 +103,12 @@ class MoviesViewArguments {
 class AppsViewArguments {
   final Key key;
   AppsViewArguments({this.key});
+}
+
+//VideoPlayerMain arguments holder class
+class VideoPlayerMainArguments {
+  final List<String> videoSources;
+  VideoPlayerMainArguments({@required this.videoSources});
 }
 
 //WeepingEmperorMain arguments holder class

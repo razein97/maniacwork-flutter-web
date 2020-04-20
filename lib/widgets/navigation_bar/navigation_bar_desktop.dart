@@ -19,6 +19,7 @@ class NavigationBarDesktop extends StatelessWidget
       height: dNavigationBarHeight,
       child: CenteredView(
         hPadding: 50.0,
+        vPadding: 0,
         maxWidth: 1500,
         maxHeight: 2000,
         child: Row(

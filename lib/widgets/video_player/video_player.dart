@@ -9,11 +9,10 @@ import 'package:website/widgets/video_player/slider_theme.dart';
 import 'package:website/widgets/video_player/video_player_config.dart';
 
 class VideoPlayerWeb extends StatefulWidget {
-  final Function fullScreen;
   final String deviceType;
   final List<String> videoSources;
 
-  VideoPlayerWeb({this.fullScreen, this.deviceType, this.videoSources});
+  VideoPlayerWeb({this.deviceType, this.videoSources});
   @override
   _VideoPlayerWebState createState() => _VideoPlayerWebState();
 }
@@ -160,7 +159,6 @@ class _VideoPlayerWebState extends State<VideoPlayerWeb> {
                               () => showControls = false);
                         }
                       },
-                      onDoubleTap: () => widget.fullScreen(),
                     ),
                     Visibility(
                       visible: showControls,
@@ -178,8 +176,9 @@ class _VideoPlayerWebState extends State<VideoPlayerWeb> {
                             }),
                       ),
                     ),
+                    //TODO: Add this when flutter team fixes bug
                     Visibility(
-                      visible: ,
+                      visible: false,
                       child: Center(
                         child: CircularProgressIndicator(
                           backgroundColor: Colors.grey,
@@ -363,7 +362,7 @@ class _VideoPlayerWebState extends State<VideoPlayerWeb> {
                                                 width: centeredViewWidth * 0.03,
                                                 child: GestureDetector(
                                                   onTap: () {
-                                                    widget.fullScreen();
+                                                    gofullScreen();
                                                     fullScreen = !fullScreen;
                                                   },
                                                   child: Icon(
@@ -434,7 +433,7 @@ class _VideoPlayerWebState extends State<VideoPlayerWeb> {
                                           width: displayWidth(context) * 0.10,
                                           child: GestureDetector(
                                             onTap: () {
-                                              widget.fullScreen();
+                                              gofullScreen();
                                               fullScreen = !fullScreen;
                                             },
                                             child: Icon(
@@ -465,6 +464,8 @@ class _VideoPlayerWebState extends State<VideoPlayerWeb> {
           }
         });
   }
+
+  void gofullScreen() {}
 
   void isPopupMenuOpen() {
     popupMenuIsOpen = !popupMenuIsOpen;

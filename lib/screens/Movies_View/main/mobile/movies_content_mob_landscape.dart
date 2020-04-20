@@ -5,8 +5,8 @@ import 'package:website/routing/router.gr.dart';
 import 'package:website/widgets/navigation_bar/navigation_bar.dart';
 import 'package:website/widgets/navigation_drawer/navigation_drawer.dart';
 
-class MoviesContentMobile extends StatelessWidget {
-  const MoviesContentMobile({Key key}) : super(key: key);
+class MoviesContentMobileLandscape extends StatelessWidget {
+  const MoviesContentMobileLandscape({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,8 +42,8 @@ class MoviesContentMobile extends StatelessWidget {
                 ExtendedNavigator.of(context).pushNamed(Routes.weepingEmperor);
               },
               child: Container(
-                width: displayWidth(context) * 0.5,
-                height: displayHeight(context) * 0.5,
+                width: displayWidth(context) * 0.4,
+                height: displayHeight(context) * 0.8,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(

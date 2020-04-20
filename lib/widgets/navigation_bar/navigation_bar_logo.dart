@@ -15,7 +15,8 @@ class NavigationBarLogo extends StatelessWidget {
           ExtendedNavigator.of(context).pushNamed(Routes.home);
         }
       },
-      child: SizedBox(
+      child: Container(
+        padding: EdgeInsets.zero,
         height: displayWidth(context) * 0.1,
         width: displayHeight(context) * 0.1,
         child: Image.asset(

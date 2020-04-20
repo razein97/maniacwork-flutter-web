@@ -3,12 +3,11 @@ import 'package:website/helpers/sizes_helpers.dart';
 import 'package:website/widgets/carousel/carousel.dart';
 import 'package:website/widgets/navigation_bar/navigation_bar.dart';
 
-class HomeContentDesktop extends StatelessWidget {
-  const HomeContentDesktop({Key key}) : super(key: key);
+class HomeContentTabletPotrait extends StatelessWidget {
+  const HomeContentTabletPotrait({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('home desktop');
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, 100),
@@ -16,13 +15,14 @@ class HomeContentDesktop extends StatelessWidget {
       ),
       body: Container(
         width: displayWidth(context),
+        color: Colors.red,
         child: ListView(
           children: <Widget>[
             Carousel(
-              centerPageEnlarge: false,
+              centerPageEnlarge: true,
               viewportFraction: 0.9,
               aspectRatio: 16 / 10,
-              height: displayHeight(context) * 0.7,
+              height: displayHeight(context) * 0.5,
             ),
           ],
         ),

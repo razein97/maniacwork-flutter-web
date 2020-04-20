@@ -1,22 +1,23 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:website/helpers/sizes_helpers.dart';
-import 'package:website/widgets/centered_view/centered_view.dart';
-import 'package:website/widgets/movie_details/movie_details_landscape.dart';
-import 'package:website/widgets/navigation_bar/navigation_bar.dart';
+import 'package:website/widgets/movie_details/movie_details_potrait.dart';
 
-class WeepingEmperorDesktop extends StatelessWidget {
+import 'package:website/widgets/navigation_bar/navigation_bar.dart';
+import 'package:website/widgets/navigation_drawer/navigation_drawer.dart';
+
+class WeepingEmperorMobileLandscape extends StatelessWidget {
   final String filePath;
-  const WeepingEmperorDesktop({Key key, this.filePath}) : super(key: key);
+  const WeepingEmperorMobileLandscape({Key key, this.filePath})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, 100),
         child: NavigationBar(),
       ),
+      drawer: NavigationDrawer(),
       body: Stack(
         children: <Widget>[
           Container(
@@ -35,21 +36,11 @@ class WeepingEmperorDesktop extends StatelessWidget {
                   colors: [Colors.transparent, Colors.black]),
             ),
           ),
-          CenteredView(
-            hPadding: 0,
-            vPadding: 0,
-            maxWidth:
-                displayWidth(context) > 1279 && displayWidth(context) <= 1366
-                    ? displayWidth(context) * 0.9
-                    : displayWidth(context) * 0.8,
-            maxHeight: displayHeight(context),
-            child: MovieDetailsLandscape(
-              filePath: filePath,
-              showWatchNowButton: true,
-              bodyFontSize: 0.02,
-              titleFontSize: 0.05,
-              buttonSize: 60,
-            ),
+          MovieDetailsPotrait(
+            filePath: filePath,
+            bodyFontSize: 0.025,
+            titleFontSize: 0.06,
+            buttonSize: 40,
           ),
         ],
       ),

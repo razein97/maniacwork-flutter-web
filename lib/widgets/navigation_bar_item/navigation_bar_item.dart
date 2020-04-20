@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:responsive_builder/responsive_builder.dart';
 import 'package:website/data_models/navigation_bar_item_model.dart';
+import 'package:website/responsive_builder/responsive_builder.dart';
 import 'package:website/widgets/navigation_bar_item/navigation_bar_item_desktop.dart';
 import 'package:website/widgets/navigation_bar_item/navigation_bar_item_mobile.dart';
 import 'package:website/widgets/navigation_bar_item/navigation_bar_item_tablet.dart';
@@ -27,13 +27,20 @@ class NavigationBarItem extends StatelessWidget {
         }
       },
       child: ScreenTypeLayout.builder(
-        desktop: (BuildContext context) => NavigationBarItemDesktop(
+        monitorLarge: (BuildContext context) => NavigationBarItemDesktop(
           model: model,
         ).showCursorOnHover,
-        tablet: (BuildContext context) => NavigationBarItemTablet(
-          model: model,
-        ).showCursorOnHover,
-        mobile: (BuildContext context) => NavigationBarItemMobile(
+        tabletLarge: (BuildContext context) => OrientationLayoutBuilder(
+          landscape: (context) => NavigationBarItemTablet(
+            model: model,
+            fontSize: 0.02,
+          ),
+          portrait: (context) => NavigationBarItemTablet(
+            model: model,
+            fontSize: 0.025,
+          ),
+        ),
+        mobileTabletNormal: (BuildContext context) => NavigationBarItemMobile(
           model: model,
         ),
       ),

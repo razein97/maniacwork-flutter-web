@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:website/helpers/sizes_helpers.dart';
 import 'package:website/routing/router.gr.dart';
 import 'package:website/widgets/navigation_bar/navigation_bar.dart';
+import 'package:website/widgets/navigation_drawer/navigation_drawer.dart';
 
-class MoviesContentTablet extends StatelessWidget {
-  const MoviesContentTablet({Key key}) : super(key: key);
+class MoviesContentMobilePotrait extends StatelessWidget {
+  const MoviesContentMobilePotrait({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +15,7 @@ class MoviesContentTablet extends StatelessWidget {
         preferredSize: Size(double.infinity, 100),
         child: NavigationBar(),
       ),
+      drawer: NavigationDrawer(),
       body: Stack(
         children: <Widget>[
           Center(
@@ -26,7 +28,6 @@ class MoviesContentTablet extends StatelessWidget {
           ),
           Center(
             child: Image.asset(
-              //'https://media.giphy.com/media/3htQ6tCfZ3qfv4sXk6/giphy.gif',
               'assets/images/movies/bg.gif',
               fit: BoxFit.fill,
               width: displayWidth(context),
@@ -41,7 +42,7 @@ class MoviesContentTablet extends StatelessWidget {
                 ExtendedNavigator.of(context).pushNamed(Routes.weepingEmperor);
               },
               child: Container(
-                width: displayWidth(context) * 0.5,
+                width: displayWidth(context) * 0.6,
                 height: displayHeight(context) * 0.5,
                 decoration: BoxDecoration(
                   image: DecorationImage(

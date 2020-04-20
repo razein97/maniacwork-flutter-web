@@ -1,0 +1,34 @@
+{
+  "releaseYear": "2018",
+  "genre": "Thriller",
+  "runtime": "15 min",
+  "title": "The Weeping Emperor",
+  "additionalTitle": "A Ballad",
+  "plot": "This is the plot of the movie it is a psychological thriller. You kill people.",
+  "directors": ["Avijit Newar", "Nitesh Sharma"],
+  "producers": [],
+  "writers": ["Avijit Newar"],
+  "stars": ["Actor 1", "Actor 2"],
+  "music": [],
+  "cinematography": ["Nitesh Sharma", "Avijit Newar"],
+  "editors": ["Avijit Newar", "Shantanu Kumar"],
+  "art": ["Rawen"],
+  "soundDesign": ["Avijit Newar", "Shantanu Kumar"],
+  "lights": [
+    "Udayan Khurana",
+    "Nitesh Kumar",
+    "Shantanu Kumar",
+    "Avijit Newar"
+  ],
+  "additional-credits": [
+    "freesound.org (various members)",
+    "freemusicarchive.org (tagirijus)",
+    "Ryan Creep-Waiting in the gloom. (YT)"
+  ],
+
+  "videoSources": [
+    "https://archive.org/download/cCloud_20151126/cCloud.mp4",
+    "https://archive.org/download/mblbhs/mblbhs.mp4",
+    "https://archive.org/download/Damas_BB_28F8B535_D_406/DaMaS.mp4"
+  ]
+}

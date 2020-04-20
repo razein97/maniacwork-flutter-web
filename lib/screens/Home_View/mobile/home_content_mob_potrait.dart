@@ -4,8 +4,8 @@ import 'package:website/widgets/carousel/carousel.dart';
 import 'package:website/widgets/navigation_bar/navigation_bar.dart';
 import 'package:website/widgets/navigation_drawer/navigation_drawer.dart';
 
-class HomeContentMobile extends StatelessWidget {
-  const HomeContentMobile({Key key}) : super(key: key);
+class HomeContentMobilePotrait extends StatelessWidget {
+  const HomeContentMobilePotrait({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class HomeContentMobile extends StatelessWidget {
       body: Container(
           width: displayWidth(context),
           color: Colors.red,
-          child: Column(
+          child: ListView(
             children: <Widget>[
               Carousel(
                 centerPageEnlarge: false,

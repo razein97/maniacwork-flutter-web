@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:website/data_models/navigation_bar_item_model.dart';
 import 'package:website/extensions/hover_extensions.dart';
+import 'package:website/helpers/sizes_helpers.dart';
 
 class NavigationBarItemMobile extends StatelessWidget {
   final NavigationBarItemModel model;
@@ -15,13 +16,15 @@ class NavigationBarItemMobile extends StatelessWidget {
           Icon(
             model.iconData,
             color: Colors.white,
+            size: displayHeight(context) * 0.03,
           ),
           SizedBox(
-            width: 25,
+            width: displayWidth(context) * 0.03,
           ),
           Text(
             model.title,
-            style: TextStyle(fontSize: 15.0, color: Colors.white),
+            style: TextStyle(
+                fontSize: displayHeight(context) * 0.025, color: Colors.white),
           ),
         ],
       ).showCursorOnHover,
