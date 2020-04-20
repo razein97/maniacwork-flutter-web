@@ -1,2 +1,2 @@
-# website
-the source for maniacwork website built in flutter
+# Website
+The source for maniacwork website built in flutter
