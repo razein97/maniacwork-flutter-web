@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 import 'package:website/constants/constants.dart';
 import 'package:website/helpers/sizes_helpers.dart';
+import 'package:website/helpers/web_fullScreen.dart';
 import 'package:website/widgets/popup_menu/popup_menu.dart';
 import 'package:website/widgets/video_player/slider_theme.dart';
 import 'package:website/widgets/video_player/video_player_config.dart';
@@ -25,7 +26,7 @@ class _VideoPlayerWebState extends State<VideoPlayerWeb> {
   int _maxDuration;
   double centeredViewWidth = 1500;
 
-  String videoQualityText = VideoConstants.r1080;
+  String videoQualityText = VideoPlayerConstants.r1080;
   String currentVideoPath;
 
   //The values that are passed when changing quality
@@ -33,13 +34,15 @@ class _VideoPlayerWebState extends State<VideoPlayerWeb> {
   double newCurrentVolume;
 
   IconData playIcon = Icons.play_arrow;
+  IconData fullScreenIcon = Icons.fullscreen;
 
   double sliderRatio;
   double volumeRatio;
 
   bool showControls = true;
-  bool _isBuffering;
-  bool fullScreen = true;
+  //bool _isBuffering;
+  bool fullScreen = false;
+
   bool popupMenuIsOpen = false;
 
   format(Duration d) {
@@ -54,7 +57,6 @@ class _VideoPlayerWebState extends State<VideoPlayerWeb> {
       setState(() {
         _playBackTime = _controller.value.position.inSeconds;
         _maxDuration = _controller.value.duration.inSeconds;
-        debugPrint(_controller.value.isBuffering.toString());
       });
     });
     _initializeVideoPlayerFuture = _controller.initialize();
@@ -195,7 +197,7 @@ class _VideoPlayerWebState extends State<VideoPlayerWeb> {
                         alignment: AlignmentDirectional.bottomCenter,
                         child: Container(
                           color: Colors.black87,
-                          height: displayHeight(context) * 0.05,
+                          height: SizeHelper.displayHeight * 0.05,
                           width: centeredViewWidth,
                           child: widget.deviceType == 'desktop'
                               ? Column(
@@ -203,7 +205,7 @@ class _VideoPlayerWebState extends State<VideoPlayerWeb> {
                                   children: <Widget>[
                                     Container(
                                       width:
-                                          displayWidth(context) * sliderRatio,
+                                          SizeHelper.displayWidth * sliderRatio,
                                       padding:
                                           EdgeInsets.symmetric(horizontal: 20),
                                       height: 10,
@@ -363,12 +365,9 @@ class _VideoPlayerWebState extends State<VideoPlayerWeb> {
                                                 child: GestureDetector(
                                                   onTap: () {
                                                     gofullScreen();
-                                                    fullScreen = !fullScreen;
                                                   },
                                                   child: Icon(
-                                                    fullScreen
-                                                        ? Icons.fullscreen
-                                                        : Icons.fullscreen_exit,
+                                                    fullScreenIcon,
                                                     color: Colors.white,
                                                   ),
                                                 ),
@@ -393,7 +392,7 @@ class _VideoPlayerWebState extends State<VideoPlayerWeb> {
                                       ),
                                     ),
                                     Container(
-                                      width: displayWidth(context) *
+                                      width: SizeHelper.displayWidth *
                                           VideoConfig.mobileSliderRatio,
                                       padding:
                                           EdgeInsets.symmetric(horizontal: 10),
@@ -430,16 +429,13 @@ class _VideoPlayerWebState extends State<VideoPlayerWeb> {
                                         ),
                                         //Button to Go Full Screen
                                         Container(
-                                          width: displayWidth(context) * 0.10,
+                                          width: SizeHelper.displayWidth * 0.10,
                                           child: GestureDetector(
                                             onTap: () {
                                               gofullScreen();
-                                              fullScreen = !fullScreen;
                                             },
                                             child: Icon(
-                                              fullScreen
-                                                  ? Icons.fullscreen
-                                                  : Icons.fullscreen_exit,
+                                              fullScreenIcon,
                                               color: Colors.white,
                                             ),
                                           ),
@@ -465,7 +461,17 @@ class _VideoPlayerWebState extends State<VideoPlayerWeb> {
         });
   }
 
-  void gofullScreen() {}
+  void gofullScreen() {
+    if (fullScreen == false) {
+      fullScreenIcon = Icons.fullscreen_exit;
+      WebFullScreen().goFullScreen();
+      fullScreen = true;
+    } else if (fullScreen == true) {
+      fullScreenIcon = Icons.fullscreen;
+      WebFullScreen().exitFullScreen();
+      fullScreen = false;
+    }
+  }
 
   void isPopupMenuOpen() {
     popupMenuIsOpen = !popupMenuIsOpen;
@@ -511,15 +517,15 @@ class _VideoPlayerWebState extends State<VideoPlayerWeb> {
       if (videoPath != currentVideoPath) {
         if (videoPath == widget.videoSources[0]) {
           _getValuesAndPlay(videoPath);
-          videoQualityText = VideoConstants.r1080;
+          videoQualityText = VideoPlayerConstants.r1080;
           currentVideoPath = videoPath;
         } else if (videoPath == widget.videoSources[1]) {
           _getValuesAndPlay(videoPath);
-          videoQualityText = VideoConstants.r720;
+          videoQualityText = VideoPlayerConstants.r720;
           currentVideoPath = videoPath;
         } else if (videoPath == widget.videoSources[2]) {
           _getValuesAndPlay(videoPath);
-          videoQualityText = VideoConstants.r480;
+          videoQualityText = VideoPlayerConstants.r480;
           currentVideoPath = videoPath;
         } else {
           print('You got something wrong');

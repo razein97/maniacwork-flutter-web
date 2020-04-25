@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:website/constants/constants.dart';
 import 'package:website/helpers/sizes_helpers.dart';
 import 'package:website/routing/router.gr.dart';
+import 'package:website/widgets/footer/footer.dart';
 import 'package:website/widgets/navigation_bar/navigation_bar.dart';
 
 class MoviesContentDesktop extends StatelessWidget {
@@ -21,16 +23,16 @@ class MoviesContentDesktop extends StatelessWidget {
             child: Image.asset(
               'assets/images/movies/bg.jpg',
               fit: BoxFit.fill,
-              width: displayWidth(context),
-              height: displayHeight(context),
+              width: SizeHelper.displayWidth,
+              height: SizeHelper.displayHeight,
             ),
           ),
           Center(
             child: Image.asset(
               'assets/images/movies/bg.gif',
               fit: BoxFit.fill,
-              width: displayWidth(context),
-              height: displayHeight(context),
+              width: SizeHelper.displayWidth,
+              height: SizeHelper.displayHeight,
             ),
           ),
           Center(
@@ -41,8 +43,8 @@ class MoviesContentDesktop extends StatelessWidget {
                 ExtendedNavigator.of(context).pushNamed(Routes.weepingEmperor);
               },
               child: Container(
-                width: displayWidth(context) * 0.3,
-                height: displayHeight(context) * 0.6,
+                width: SizeHelper.displayWidth * 0.3,
+                height: SizeHelper.displayHeight * 0.6,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(
@@ -52,7 +54,13 @@ class MoviesContentDesktop extends StatelessWidget {
                 ),
               ),
             ),
-          )
+          ),
+          Positioned(
+            bottom: 0,
+            child: Footer(
+              footerHeight: FooterConstants.footerHeightDesktop,
+            ),
+          ),
         ],
       ),
     );

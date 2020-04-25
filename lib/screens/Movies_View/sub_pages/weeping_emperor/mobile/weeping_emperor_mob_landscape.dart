@@ -7,7 +7,8 @@ import 'package:website/widgets/navigation_drawer/navigation_drawer.dart';
 
 class WeepingEmperorMobileLandscape extends StatelessWidget {
   final String filePath;
-  const WeepingEmperorMobileLandscape({Key key, this.filePath})
+  final String posterPath;
+  const WeepingEmperorMobileLandscape({Key key, this.filePath, this.posterPath})
       : super(key: key);
 
   @override
@@ -38,9 +39,10 @@ class WeepingEmperorMobileLandscape extends StatelessWidget {
           ),
           MovieDetailsPotrait(
             filePath: filePath,
+            posterPath: posterPath,
             bodyFontSize: 0.025,
             titleFontSize: 0.06,
-            buttonSize: 40,
+            buttonHeight: 40,
           ),
         ],
       ),

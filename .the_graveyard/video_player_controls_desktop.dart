@@ -35,13 +35,13 @@ class VideoPlayerControlsDesktop extends StatelessWidget {
       alignment: AlignmentDirectional.bottomCenter,
       child: Container(
         color: Colors.yellowAccent,
-        height: displayHeight(context) * 0.05,
+        height: SizeHelper.displayHeight * 0.05,
         width: centeredViewWidth,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
             Container(
-              width: displayWidth(context) * sliderRatio,
+              width: SizeHelper.displayWidth * sliderRatio,
               padding: EdgeInsets.symmetric(horizontal: 20),
               height: 10,
               child: MySliderTheme(

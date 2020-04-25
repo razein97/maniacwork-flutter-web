@@ -1,15 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:website/constants/constants.dart';
+import 'package:website/helpers/sizes_helpers.dart';
+import 'package:website/widgets/footer/footer.dart';
+import 'package:website/widgets/navigation_bar/navigation_bar.dart';
 
 class AppsContentDesktop extends StatelessWidget {
   const AppsContentDesktop({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.teal,
-      child: Text(
-        "APPs CONTENT DESKTOP",
-        style: TextStyle(fontSize: 100.0),
+    return Scaffold(
+      backgroundColor: Colors.black,
+      appBar: PreferredSize(
+        preferredSize: Size(double.infinity, 100),
+        child: NavigationBar(),
+      ),
+      body: Stack(
+        children: <Widget>[
+          Center(
+            child: Container(
+              width: SizeHelper.displayWidth * 0.5,
+              height: SizeHelper.displayHeight * 0.5,
+              child: Image.network(
+                  'https://media.giphy.com/media/Utc5g8lnctVSPItLFY/source.gif'),
+            ),
+          ),
+          Positioned(
+            bottom: 0,
+            child: Footer(
+              footerHeight: FooterConstants.footerHeightDesktop,
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -29,6 +29,7 @@ class NavigationBarItem extends StatelessWidget {
       child: ScreenTypeLayout.builder(
         monitorLarge: (BuildContext context) => NavigationBarItemDesktop(
           model: model,
+          fontSize: 0.02,
         ).showCursorOnHover,
         tabletLarge: (BuildContext context) => OrientationLayoutBuilder(
           landscape: (context) => NavigationBarItemTablet(
@@ -37,11 +38,18 @@ class NavigationBarItem extends StatelessWidget {
           ),
           portrait: (context) => NavigationBarItemTablet(
             model: model,
-            fontSize: 0.025,
+            fontSize: 0.02,
           ),
         ),
-        mobileTabletNormal: (BuildContext context) => NavigationBarItemMobile(
-          model: model,
+        mobileTabletNormal: (BuildContext context) => OrientationLayoutBuilder(
+          portrait: (context) => NavigationBarItemMobile(
+            model: model,
+            fontSize: 0.05,
+          ),
+          landscape: (context) => NavigationBarItemMobile(
+            model: model,
+            fontSize: 0.03,
+          ),
         ),
       ),
     );

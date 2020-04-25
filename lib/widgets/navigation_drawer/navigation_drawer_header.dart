@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:website/helpers/sizes_helpers.dart';
-import 'package:website/widgets/navigation_bar/navigation_bar_logo.dart';
 import 'package:website/extensions/hover_extensions.dart';
 
 class NavigationDrawerHeader extends StatelessWidget {
@@ -9,7 +8,7 @@ class NavigationDrawerHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: displayHeight(context) * 0.2,
+        height: SizeHelper.displayWidth * 0.2,
         color: Colors.cyan,
         alignment: Alignment.center,
         child: Column(
@@ -32,20 +31,13 @@ class NavigationDrawerHeader extends StatelessWidget {
                 ),
               ],
             ).showCursorOnHover,
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                NavigationBarLogo(),
-                Text(
-                  'Maniacwork',
-                  overflow: TextOverflow.clip,
-                  style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white),
-                ),
-              ],
+            Text(
+              'Maniacwork',
+              overflow: TextOverflow.clip,
+              style: TextStyle(
+                  fontSize: SizeHelper.displayWidth * 0.06,
+                  fontWeight: FontWeight.w800,
+                  color: Colors.white),
             ).showCursorOnHover,
           ],
         ));

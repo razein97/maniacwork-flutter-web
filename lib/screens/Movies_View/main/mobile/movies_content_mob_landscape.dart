@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:website/constants/constants.dart';
 import 'package:website/helpers/sizes_helpers.dart';
 import 'package:website/routing/router.gr.dart';
+import 'package:website/widgets/footer/footer.dart';
 import 'package:website/widgets/navigation_bar/navigation_bar.dart';
 import 'package:website/widgets/navigation_drawer/navigation_drawer.dart';
 
@@ -22,16 +24,16 @@ class MoviesContentMobileLandscape extends StatelessWidget {
             child: Image.asset(
               'assets/images/movies/bg.jpg',
               fit: BoxFit.fill,
-              width: displayWidth(context),
-              height: displayHeight(context),
+              width: SizeHelper.displayWidth,
+              height: SizeHelper.displayHeight,
             ),
           ),
           Center(
             child: Image.asset(
               'assets/images/movies/bg.gif',
               fit: BoxFit.fill,
-              width: displayWidth(context),
-              height: displayHeight(context),
+              width: SizeHelper.displayWidth,
+              height: SizeHelper.displayHeight,
             ),
           ),
           Center(
@@ -42,8 +44,8 @@ class MoviesContentMobileLandscape extends StatelessWidget {
                 ExtendedNavigator.of(context).pushNamed(Routes.weepingEmperor);
               },
               child: Container(
-                width: displayWidth(context) * 0.4,
-                height: displayHeight(context) * 0.8,
+                width: SizeHelper.displayWidth * 0.4,
+                height: SizeHelper.displayHeight * 0.8,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(
@@ -53,7 +55,13 @@ class MoviesContentMobileLandscape extends StatelessWidget {
                 ),
               ),
             ),
-          )
+          ),
+          Positioned(
+            bottom: 0,
+            child: Footer(
+              footerHeight: FooterConstants.footerHeightMobileLandscape,
+            ),
+          ),
         ],
       ),
     );

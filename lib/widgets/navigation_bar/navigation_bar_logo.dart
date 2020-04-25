@@ -17,8 +17,8 @@ class NavigationBarLogo extends StatelessWidget {
       },
       child: Container(
         padding: EdgeInsets.zero,
-        height: displayWidth(context) * 0.1,
-        width: displayHeight(context) * 0.1,
+        height: SizeHelper.displayWidth * 0.1,
+        width: SizeHelper.displayHeight * 0.1,
         child: Image.asset(
           'assets/images/logo/LOGO_alpha.png',
           fit: BoxFit.contain,

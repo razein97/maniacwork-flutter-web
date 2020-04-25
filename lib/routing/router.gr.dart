@@ -17,7 +17,7 @@ abstract class Routes {
   static const home = '/';
   static const movies = '/movies';
   static const apps = '/apps';
-  static const videoPlayerMain = '/video-player-main';
+  static const videoPlayer = '/video-player';
   static const weepingEmperor = '/weeping-emperor';
 }
 
@@ -58,7 +58,7 @@ class Router extends RouterBase {
           builder: (_) => AppsView(key: typedArgs.key),
           settings: settings,
         );
-      case Routes.videoPlayerMain:
+      case Routes.videoPlayer:
         if (hasInvalidArgs<VideoPlayerMainArguments>(args, isRequired: true)) {
           return misTypedArgsRoute<VideoPlayerMainArguments>(args);
         }

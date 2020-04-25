@@ -7,7 +7,8 @@ import 'package:website/widgets/navigation_bar/navigation_bar.dart';
 
 class WeepingEmperorTabletLandscape extends StatelessWidget {
   final String filePath;
-  const WeepingEmperorTabletLandscape({Key key, this.filePath})
+  final String posterPath;
+  const WeepingEmperorTabletLandscape({Key key, this.filePath, this.posterPath})
       : super(key: key);
 
   @override
@@ -39,14 +40,15 @@ class WeepingEmperorTabletLandscape extends StatelessWidget {
           CenteredView(
             hPadding: 0,
             vPadding: 0,
-            maxWidth: displayWidth(context) * 0.9,
-            maxHeight: displayHeight(context),
+            maxWidth: SizeHelper.displayWidth * 0.9,
+            maxHeight: SizeHelper.displayHeight,
             child: MovieDetailsLandscape(
               filePath: filePath,
+              posterPath: posterPath,
               showWatchNowButton: true,
-              bodyFontSize: 0.05,
-              titleFontSize: 0.06,
-              buttonSize: 40,
+              bodyFontSize: 0.02,
+              titleFontSize: 0.05,
+              buttonHeight: 40,
             ),
           ),
         ],

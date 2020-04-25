@@ -29,7 +29,7 @@ class MyPopUpMenu extends StatelessWidget {
       onSelected: choiceAction,
       onCanceled: switchStatePopupMenu,
       itemBuilder: (BuildContext context) {
-        return VideoConstants.resolutionText.map((String choice) {
+        return VideoPlayerConstants.resolutionText.map((String choice) {
           return PopupMenuItem(
             value: choice,
             child: Text(
@@ -43,13 +43,13 @@ class MyPopUpMenu extends StatelessWidget {
   }
 
   void choiceAction(String choice) {
-    if (choice == VideoConstants.r1080) {
+    if (choice == VideoPlayerConstants.r1080) {
       changeStream(videoSources[0]);
       switchStatePopupMenu();
-    } else if (choice == VideoConstants.r720) {
+    } else if (choice == VideoPlayerConstants.r720) {
       changeStream(videoSources[1]);
       switchStatePopupMenu();
-    } else if (choice == VideoConstants.r480) {
+    } else if (choice == VideoPlayerConstants.r480) {
       changeStream(videoSources[2]);
       switchStatePopupMenu();
     }

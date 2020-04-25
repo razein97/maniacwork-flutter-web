@@ -36,7 +36,7 @@ class Carousel extends StatelessWidget {
             child: Image.asset(
               i,
               fit: BoxFit.fill,
-              width: displayWidth(context),
+              width: SizeHelper.displayWidth,
             ),
           );
         },

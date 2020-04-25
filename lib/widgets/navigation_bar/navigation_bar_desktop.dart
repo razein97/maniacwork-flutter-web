@@ -8,20 +8,22 @@ import 'package:website/widgets/navigation_bar_item/navigation_bar_item.dart';
 class NavigationBarDesktop extends StatelessWidget
     implements PreferredSizeWidget {
   final Size preferredSize;
-  NavigationBarDesktop() : preferredSize = Size.fromHeight(60.0);
+  NavigationBarDesktop() : preferredSize = Size.fromHeight(100.0);
 
   @override
   Widget build(BuildContext context) {
-    double dSizedBox = displayWidth(context) * 0.02;
-    double dNavigationBarHeight = displayHeight(context) * 0.06;
+    double dSizedBox = SizeHelper.displayWidth * 0.02;
+    double dNavigationBarHeight = SizeHelper.displayHeight * 0.06;
     return Container(
-      color: Colors.black,
+      color: Colors.transparent,
       height: dNavigationBarHeight,
       child: CenteredView(
         hPadding: 50.0,
         vPadding: 0,
-        maxWidth: 1500,
-        maxHeight: 2000,
+        maxWidth: SizeHelper.displayWidth <= 1280
+            ? SizeHelper.displayWidth * 0.9
+            : SizeHelper.displayWidth * 0.8,
+        maxHeight: SizeHelper.displayHeight * 0.1,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
@@ -33,9 +35,6 @@ class NavigationBarDesktop extends StatelessWidget
                   'Apps',
                   Routes.apps,
                 ),
-                SizedBox(
-                  width: dSizedBox,
-                ),
                 NavigationBarItem(
                   'Movies',
                   Routes.movies,
@@ -43,12 +42,6 @@ class NavigationBarDesktop extends StatelessWidget
                 SizedBox(
                   width: dSizedBox,
                 ),
-
-                //TODO: Implement other menus.
-                // NavigationBarItem(
-                //   title: 'SourceCode',
-                //   routePath: Router.View,
-                // ),
               ],
             )
           ],

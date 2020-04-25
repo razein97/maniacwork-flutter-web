@@ -10,8 +10,9 @@ class NavigationBarMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.black,
-      height: displayHeight(context) * navBarHeight,
+      padding: EdgeInsets.only(right: SizeHelper.displayWidth * 0.02),
+      color: Colors.transparent,
+      height: SizeHelper.displayHeight * navBarHeight,
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

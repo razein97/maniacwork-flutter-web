@@ -7,7 +7,9 @@ import 'package:website/widgets/navigation_bar/navigation_bar.dart';
 
 class WeepingEmperorDesktop extends StatelessWidget {
   final String filePath;
-  const WeepingEmperorDesktop({Key key, this.filePath}) : super(key: key);
+  final String posterPath;
+  const WeepingEmperorDesktop({Key key, this.filePath, this.posterPath})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,17 +40,17 @@ class WeepingEmperorDesktop extends StatelessWidget {
           CenteredView(
             hPadding: 0,
             vPadding: 0,
-            maxWidth:
-                displayWidth(context) > 1279 && displayWidth(context) <= 1366
-                    ? displayWidth(context) * 0.9
-                    : displayWidth(context) * 0.8,
-            maxHeight: displayHeight(context),
+            maxWidth: SizeHelper.displayWidth > 1279 &&
+                    SizeHelper.displayWidth <= 1366
+                ? SizeHelper.displayWidth * 0.9
+                : SizeHelper.displayWidth * 0.8,
+            maxHeight: SizeHelper.displayHeight,
             child: MovieDetailsLandscape(
               filePath: filePath,
-              showWatchNowButton: true,
+              posterPath: posterPath,
               bodyFontSize: 0.02,
               titleFontSize: 0.05,
-              buttonSize: 60,
+              buttonHeight: 60,
             ),
           ),
         ],

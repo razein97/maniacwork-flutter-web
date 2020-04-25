@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:website/helpers/size_config.dart';
+import 'package:website/helpers/sizes_helpers.dart';
 import 'package:website/responsive_builder/responsive_builder.dart';
 import 'package:website/screens/Home_View/home_content_desktop.dart';
 import 'package:website/screens/Home_View/mobile/home_content_mob_landscape.dart';
@@ -12,7 +12,7 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
+    SizeHelper().init(context);
     return SafeArea(
       child: ScreenTypeLayout.builder(
         mobileTabletNormal: (BuildContext context) => OrientationLayoutBuilder(
@@ -23,7 +23,12 @@ class HomeView extends StatelessWidget {
           landscape: (context) => HomeContentTabletLandscape(),
           portrait: (context) => HomeContentTabletPotrait(),
         ),
-        monitorLarge: (BuildContext context) => HomeContentDesktop(),
+        monitorSmall: (BuildContext context) => HomeContentDesktop(
+          centeredViewMaxWidth: 0.9,
+        ),
+        monitorLarge: (BuildContext context) => HomeContentDesktop(
+          centeredViewMaxWidth: 0.8,
+        ),
       ),
     );
   }

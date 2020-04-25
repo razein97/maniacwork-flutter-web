@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:website/constants/constants.dart';
 import 'package:website/helpers/sizes_helpers.dart';
 import 'package:website/widgets/carousel/carousel.dart';
+import 'package:website/widgets/footer/footer.dart';
 import 'package:website/widgets/navigation_bar/navigation_bar.dart';
 
 class HomeContentTabletLandscape extends StatelessWidget {
@@ -14,15 +16,17 @@ class HomeContentTabletLandscape extends StatelessWidget {
         child: NavigationBar(),
       ),
       body: Container(
-          width: displayWidth(context),
-          color: Colors.blue,
+          width: SizeHelper.displayWidth,
           child: ListView(
             children: <Widget>[
               Carousel(
                 centerPageEnlarge: true,
                 viewportFraction: 0.9,
                 aspectRatio: 16 / 10,
-                height: displayHeight(context) * 0.8,
+                height: SizeHelper.displayHeight * 0.8,
+              ),
+              Footer(
+                footerHeight: FooterConstants.footerHeightTablet,
               ),
             ],
           )),

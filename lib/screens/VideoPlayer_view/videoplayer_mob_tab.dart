@@ -11,8 +11,8 @@ class VideoPlayerMobileTablet extends StatelessWidget {
     return Scaffold(
       body: Container(
         color: Colors.black,
-        width: displayWidth(context),
-        height: displayHeight(context),
+        width: SizeHelper.displayWidth,
+        height: SizeHelper.displayHeight,
         child: VideoPlayerWeb(
           deviceType: 'mobile',
           videoSources: videoSources,

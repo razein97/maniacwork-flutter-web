@@ -17,7 +17,7 @@ class MyDropDownMenu extends StatelessWidget {
     return DropdownButton<String>(
       value: videoQualityText,
       onChanged: choiceAction,
-      items: VideoConstants.resolutionText.map((String choice) {
+      items: VideoPlayerConstants.resolutionText.map((String choice) {
         return DropdownMenuItem(
           value: choice,
           child: Text(
@@ -27,43 +27,16 @@ class MyDropDownMenu extends StatelessWidget {
         );
       }).toList(),
     );
-
-    // PopupMenuButton(
-    //   padding: EdgeInsets.zero,
-    //   color: Colors.black87,
-    //   child: Container(
-    //     child: Center(
-    //       child: Text(
-    //         videoQualityText,
-    //         style: TextStyle(color: Colors.white),
-    //       ),
-    //     ),
-    //   ),
-    //   tooltip: 'Resolution',
-    //   onSelected: choiceAction,
-    //   onCanceled: switchStatePopupMenu,
-    //   itemBuilder: (BuildContext context) {
-    //     return VideoConstants.resolutionText.map((String choice) {
-    //       return PopupMenuItem(
-    //         value: choice,
-    //         child: Text(
-    //           choice,
-    //           style: TextStyle(color: Colors.white),
-    //         ),
-    //       );
-    //     }).toList();
-    //   },
-    // );
   }
 
   void choiceAction(String choice) {
-    if (choice == VideoConstants.r1080) {
+    if (choice == VideoPlayerConstants.r1080) {
       changeStream(videoSources[0]);
       switchStatePopupMenu();
-    } else if (choice == VideoConstants.r720) {
+    } else if (choice == VideoPlayerConstants.r720) {
       changeStream(videoSources[1]);
       switchStatePopupMenu();
-    } else if (choice == VideoConstants.r480) {
+    } else if (choice == VideoPlayerConstants.r480) {
       changeStream(videoSources[2]);
       switchStatePopupMenu();
     }

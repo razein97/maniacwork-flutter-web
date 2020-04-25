@@ -11,10 +11,9 @@ class NavigationBarTablet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double dSizedBox = displayWidth(context) * 0.05;
-    double dNavigationBarHeight = displayWidth(context) * navBarHeight;
+    double dNavigationBarHeight = SizeHelper.displayWidth * navBarHeight;
     return Container(
-      color: Colors.black,
+      color: Colors.transparent,
       height: dNavigationBarHeight,
       child: CenteredView(
         vPadding: 0,
@@ -32,22 +31,10 @@ class NavigationBarTablet extends StatelessWidget {
                   'Apps',
                   Routes.apps,
                 ),
-                SizedBox(
-                  width: dSizedBox,
-                ),
                 NavigationBarItem(
                   'Movies',
                   Routes.movies,
                 ),
-                SizedBox(
-                  width: dSizedBox,
-                ),
-
-                //TODO: Implement other menus.
-                // NavigationBarItem(
-                //   title: 'SourceCode',
-                //   routePath: Router.View,
-                // ),
               ],
             )
           ],

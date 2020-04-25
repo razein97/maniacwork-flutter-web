@@ -1,24 +1,27 @@
 import 'dart:ui';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:website/constants/constants.dart';
 import 'package:website/helpers/sizes_helpers.dart';
 import 'package:website/routing/router.gr.dart';
 import 'package:website/screens/Movies_View/sub_pages/weeping_emperor/weeping_emperor_data.dart';
+import 'package:website/widgets/footer/footer.dart';
 import 'package:website/widgets/movie_details/movie_details_styles.dart';
+import 'package:website/extensions/hover_extensions.dart';
 
 class MovieDetailsPotrait extends StatefulWidget {
   final String filePath;
-
+  final String posterPath;
   final double bodyFontSize;
   final double titleFontSize;
-  final double buttonSize;
+  final double buttonHeight;
 
   MovieDetailsPotrait({
     this.filePath,
+    this.posterPath,
     this.bodyFontSize,
     this.titleFontSize,
-    this.buttonSize,
+    this.buttonHeight,
   });
 
   @override
@@ -37,8 +40,6 @@ class _MovieDetailsState extends State<MovieDetailsPotrait> {
   List<String> writers = [];
   List<String> stars = [];
   List<String> videoSources = [];
-
-  bool showWatchNowButton = true;
 
   @override
   void initState() {
@@ -73,130 +74,63 @@ class _MovieDetailsState extends State<MovieDetailsPotrait> {
     return ListView(
       children: <Widget>[
         //This contains the poster
-        Column(
-          children: <Widget>[
-            AspectRatio(
-              aspectRatio: 16 / 9,
-              child: Container(
-                child: Image.asset(
-                  'assets/images/movies/weeping_emperor/6814797_landscape_1564162383.jpg',
-                  fit: BoxFit.fill,
-                ),
-              ),
+        AspectRatio(
+          aspectRatio: 16 / 9,
+          child: Container(
+            child: Image.asset(
+              widget.posterPath,
+              fit: BoxFit.fill,
             ),
-
-            //This is the Play Button
-
-            Row(
-              children: <Widget>[
-                Expanded(
-                  flex: 5,
-                  child: Container(
-                    height: widget.buttonSize,
-                    child: FlatButton(
-                      padding: EdgeInsets.zero,
-                      color: Colors.red,
-                      onPressed: () {
-                        ExtendedNavigator.of(context).pushNamed(
-                          Routes.videoPlayerMain,
-                          arguments: VideoPlayerMainArguments(
-                              videoSources: videoSources),
-                        );
-                      },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: <Widget>[
-                          Text(
-                            'WATCH NOW',
-                            style: movieButtonTextStyle.copyWith(
-                                fontSize: displayWidth(context) *
-                                    widget.bodyFontSize),
-                          ),
-                          Icon(
-                            Icons.arrow_right,
-                            size: displayHeight(context) * widget.bodyFontSize,
-                            color: Colors.white,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    height: widget.buttonSize,
-                    child: FlatButton(
-                      padding: EdgeInsets.zero,
-                      color: Color.fromRGBO(67, 101, 173, 1.0),
-                      onPressed: () {},
-                      child: Icon(
-                        FontAwesomeIcons.facebookF,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    height: widget.buttonSize,
-                    child: FlatButton(
-                      padding: EdgeInsets.zero,
-                      color: Colors.blue,
-                      onPressed: () {},
-                      child: Icon(
-                        FontAwesomeIcons.twitter,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    height: widget.buttonSize,
-                    child: FlatButton(
-                      padding: EdgeInsets.zero,
-                      color: Colors.grey,
-                      onPressed: () {},
-                      child: Icon(
-                        FontAwesomeIcons.shareAlt,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ],
+          ),
         ),
+
+        //This is the Play Button
+
+        Container(
+          height: widget.buttonHeight,
+          width: SizeHelper.displayWidth,
+          child: FlatButton(
+            padding: EdgeInsets.zero,
+            color: Colors.red,
+            onPressed: () {
+              ExtendedNavigator.of(context).pushNamed(
+                Routes.videoPlayer,
+                arguments: VideoPlayerMainArguments(videoSources: videoSources),
+              );
+            },
+            child: Text(
+              'WATCH NOW',
+              style: movieButtonTextStyle.copyWith(
+                  fontSize: SizeHelper.displayWidth * widget.bodyFontSize),
+            ),
+          ),
+        ).showCursorOnHover,
 
         //Title Movie
         Padding(
           padding:
-              EdgeInsets.symmetric(horizontal: displayWidth(context) * 0.05),
+              EdgeInsets.symmetric(horizontal: SizeHelper.displayWidth * 0.05),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               SizedBox(
-                height: displayHeight(context) * 0.03,
+                height: SizeHelper.displayHeight * 0.03,
               ),
 
               Text(
                 title,
                 style: movieTitleTextStyle.copyWith(
-                    fontSize: displayWidth(context) * widget.titleFontSize),
+                    fontSize: SizeHelper.displayWidth * widget.titleFontSize),
               ),
               Text(
                 additionalTitle,
                 style: movieAdditionalTitleTextStyle.copyWith(
                   fontSize:
-                      displayWidth(context) * (widget.titleFontSize - 0.02),
+                      SizeHelper.displayWidth * (widget.titleFontSize - 0.02),
                 ),
               ),
               SizedBox(
-                height: displayHeight(context) * 0.03,
+                height: SizeHelper.displayHeight * 0.03,
               ),
 
               //This is the run time
@@ -206,35 +140,35 @@ class _MovieDetailsState extends State<MovieDetailsPotrait> {
                     TextSpan(
                       text: releaseYear,
                       style: movieAdditionalTextStyle.copyWith(
-                        fontSize: displayWidth(context) *
+                        fontSize: SizeHelper.displayWidth *
                             (widget.bodyFontSize - 0.003),
                       ),
                     ),
                     TextSpan(
                       text: ' | ',
                       style: movieAdditionalTextStyle.copyWith(
-                        fontSize: displayWidth(context) *
+                        fontSize: SizeHelper.displayWidth *
                             (widget.bodyFontSize - 0.003),
                       ),
                     ),
                     TextSpan(
                       text: genre,
                       style: movieAdditionalTextStyle.copyWith(
-                        fontSize: displayWidth(context) *
+                        fontSize: SizeHelper.displayWidth *
                             (widget.bodyFontSize - 0.003),
                       ),
                     ),
                     TextSpan(
                       text: ' | ',
                       style: movieAdditionalTextStyle.copyWith(
-                        fontSize: displayWidth(context) *
+                        fontSize: SizeHelper.displayWidth *
                             (widget.bodyFontSize - 0.003),
                       ),
                     ),
                     TextSpan(
                       text: runtime,
                       style: movieAdditionalTextStyle.copyWith(
-                        fontSize: displayWidth(context) *
+                        fontSize: SizeHelper.displayWidth *
                             (widget.bodyFontSize - 0.003),
                       ),
                     ),
@@ -245,99 +179,96 @@ class _MovieDetailsState extends State<MovieDetailsPotrait> {
               SizedBox(
                 height: 20,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  RichText(
-                    text: TextSpan(
-                      text: plot,
-                      style: movieBodyTextStyle.copyWith(
-                        fontSize: displayWidth(context) * widget.bodyFontSize,
+              RichText(
+                text: TextSpan(
+                  text: plot,
+                  style: movieBodyTextStyle.copyWith(
+                    fontSize: SizeHelper.displayWidth * widget.bodyFontSize,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: 'Directors\n',
+                      style: movieSubTitleTextStyle.copyWith(
+                        fontSize: SizeHelper.displayWidth * widget.bodyFontSize,
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  RichText(
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text: 'Directors\n',
-                          style: movieSubTitleTextStyle.copyWith(
-                            fontSize:
-                                displayWidth(context) * widget.bodyFontSize,
-                          ),
-                        ),
-                        TextSpan(
-                          text: directors
-                              .toString()
-                              .replaceAll('[', '')
-                              .replaceAll(']', ''),
-                          style: movieBodyTextStyle.copyWith(
-                            fontSize:
-                                displayWidth(context) * widget.bodyFontSize,
-                          ),
-                        ),
-                      ],
+                    TextSpan(
+                      text: directors
+                          .toString()
+                          .replaceAll('[', '')
+                          .replaceAll(']', ''),
+                      style: movieBodyTextStyle.copyWith(
+                        fontSize: SizeHelper.displayWidth * widget.bodyFontSize,
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  RichText(
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text: 'Stars\n',
-                          style: movieSubTitleTextStyle.copyWith(
-                            fontSize:
-                                displayWidth(context) * widget.bodyFontSize,
-                          ),
-                        ),
-                        TextSpan(
-                          text: stars
-                              .toString()
-                              .replaceAll('[', '')
-                              .replaceAll(']', ''),
-                          style: movieBodyTextStyle.copyWith(
-                            fontSize:
-                                displayWidth(context) * widget.bodyFontSize,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  RichText(
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text: 'Writers\n',
-                          style: movieSubTitleTextStyle.copyWith(
-                            fontSize:
-                                displayWidth(context) * widget.bodyFontSize,
-                          ),
-                        ),
-                        TextSpan(
-                          text: writers
-                              .toString()
-                              .replaceAll('[', '')
-                              .replaceAll(']', ''),
-                          style: movieBodyTextStyle.copyWith(
-                            fontSize:
-                                displayWidth(context) * widget.bodyFontSize,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
+              SizedBox(
+                height: 10,
+              ),
+              RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: 'Stars\n',
+                      style: movieSubTitleTextStyle.copyWith(
+                        fontSize: SizeHelper.displayWidth * widget.bodyFontSize,
+                      ),
+                    ),
+                    TextSpan(
+                      text: stars
+                          .toString()
+                          .replaceAll('[', '')
+                          .replaceAll(']', ''),
+                      style: movieBodyTextStyle.copyWith(
+                        fontSize: SizeHelper.displayWidth * widget.bodyFontSize,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: 'Writers\n',
+                      style: movieSubTitleTextStyle.copyWith(
+                        fontSize: SizeHelper.displayWidth * widget.bodyFontSize,
+                      ),
+                    ),
+                    TextSpan(
+                      text: writers
+                          .toString()
+                          .replaceAll('[', '')
+                          .replaceAll(']', ''),
+                      style: movieBodyTextStyle.copyWith(
+                        fontSize: SizeHelper.displayWidth * widget.bodyFontSize,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              SizedBox(
+                height: SizeHelper.displayHeight * 0.1,
+              )
             ],
           ),
+        ),
+
+        Footer(
+          footerHeight: FooterConstants.footerHeightMobilePotrait,
         ),
       ],
     );
